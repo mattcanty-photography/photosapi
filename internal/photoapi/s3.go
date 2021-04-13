@@ -16,7 +16,7 @@ type S3ImageSource struct {
 	Prefix     string
 }
 
-func (s S3ImageSource) GetImage(photoData *PhotoData, decoder ImageDecoder) error {
+func (s S3ImageSource) GetImage(photoData *PhotoData) error {
 	svc := s3.New(session.New(), &aws.Config{Region: aws.String(s.Region)})
 
 	objectOutput, err := svc.GetObject(&s3.GetObjectInput{

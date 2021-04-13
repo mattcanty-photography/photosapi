@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/httplog"
+	"github.com/go-chi/render"
 )
 
 func SetupRouting(config Configuration) http.Handler {
@@ -22,6 +23,7 @@ func SetupRouting(config Configuration) http.Handler {
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Compress(9, "text/html"))
 
+	r.HandleFunc(fmt.Sprintf("%s/favicon.ico", config.RoutePatternPrefix), render.NoContent)
 	r.HandleFunc(fmt.Sprintf("%s/{ID}", config.RoutePatternPrefix), config.thumbnailHandler)
 
 	r.NotFound(notFoundPageHandler)

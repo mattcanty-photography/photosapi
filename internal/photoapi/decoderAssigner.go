@@ -13,6 +13,7 @@ func GetDecoderByExtension(photoData *PhotoData) error {
 	log.Printf("Extension: '%s'", extension)
 	switch extension {
 	case ".jpg":
+		photoData.Decoder = &JPGDecoder{}
 	case ".jpeg":
 		photoData.Decoder = &JPGDecoder{}
 	case ".cr2":

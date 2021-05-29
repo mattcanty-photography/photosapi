@@ -33,6 +33,7 @@ func (c *Configuration) thumbnailHandler(w http.ResponseWriter, r *http.Request)
 
 	photoData.Image = resize.Resize(400, 0, photoData.Image, resize.Lanczos3)
 
+	w.Header().Add("Content-Type", "image/jpeg; charset=utf-8")
 	err = jpeg.Encode(w, photoData.Image, nil)
 	if err != nil {
 		log.Fatal(err)

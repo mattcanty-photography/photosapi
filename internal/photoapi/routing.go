@@ -24,7 +24,7 @@ func SetupRouting(config Configuration) http.Handler {
 	r.Use(middleware.Compress(9, "text/html"))
 
 	r.HandleFunc(fmt.Sprintf("%s/favicon.ico", config.RoutePatternPrefix), render.NoContent)
-	r.HandleFunc(fmt.Sprintf("%s/{ID}", config.RoutePatternPrefix), config.thumbnailHandler)
+	r.HandleFunc(fmt.Sprintf("%s/photo/{ID}", config.RoutePatternPrefix), config.thumbnailHandler)
 
 	r.NotFound(notFoundPageHandler)
 

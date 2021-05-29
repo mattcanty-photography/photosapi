@@ -8,8 +8,14 @@ import (
 )
 
 func main() {
-	imageSource := &photoapi.FileSystemImageSource{
-		Directory: "~/Photos",
+	// imageSource := &photoapi.FileSystemImageSource{
+	// 	Directory: "~/Photos",
+	// }
+
+	imageSource := &photoapi.S3ImageSource{
+		Region:     "eu-west-2",
+		BucketName: "photo-mattcanty-com-dev-photos-4681677",
+		Prefix:     "",
 	}
 
 	config := photoapi.Configuration{

@@ -13,7 +13,7 @@ import (
 func (c *Configuration) thumbnailHandler(w http.ResponseWriter, r *http.Request) {
 
 	photoData := &PhotoData{
-		ID: chi.URLParam(r, "ID"),
+		ID: chi.URLParam(r, "*"),
 	}
 
 	err := GetDecoderByExtension(photoData)
